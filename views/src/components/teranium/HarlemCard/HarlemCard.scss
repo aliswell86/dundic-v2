@@ -1,0 +1,109 @@
+@import 'utils';
+
+.harlem-cardinfo {
+  padding: 0.6rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+
+    @include media("<small") {
+      font-size: 1.2rem;
+      font-weight: bold
+    }
+  }
+
+  .notice {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: $oc-gray-8;
+    font-weight: bold;
+  }
+
+  .rank-title {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+
+    .name {
+      flex: 1;
+    }
+
+    .gold_title {
+      width: 90px;
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
+  .rank-object {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    border-top: 1px solid $oc-gray-2;
+
+    .img-name {
+      display: flex;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: center;
+
+      .img {
+        margin: 0.4rem;
+        margin-right: 0.4rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+      }
+
+      .name {
+        width: 170px;
+      }
+    }
+
+    .info {
+      display: flex;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: center;
+
+      .day-gold-red {
+        text-align: left;
+        font-weight: bold;
+        width: 96px;
+        color: $oc-red-6;
+  
+        .gold_img {
+          width: 14px;
+          margin-right: 2px;
+        }
+
+        .teranium_img {
+          width: 10px;
+          margin-right: 2px;
+        }
+      }
+
+      .trader {
+        text-align: left;
+        font-weight: bold;
+        width: 90px;
+      }
+    }
+  }
+}

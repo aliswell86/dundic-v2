@@ -1,0 +1,55 @@
+@import 'utils';
+
+.outline {
+  padding: 0.6rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .chapter01 {
+    margin: 100px 0px;
+    text-align: center;
+
+    .title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .copy {
+      margin: 10px 0px;
+      font-weight: bolder;
+      font-size: 2rem;
+    }
+
+    .copy-desc {
+      margin-top: 40px;
+      line-height: 1.4rem;
+    }
+  }
+
+  .chapter02 {
+    height: 600px;
+    background: url('http://bbscdn.df.nexon.com/data6/commu/201901/092232_5c4905489a2f5.jpg') 50% fixed/cover;
+  }
+
+  .chapter03 {
+    margin: 100px 0px;
+    text-align: center;
+
+    .title {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .deco-bar {
+      display: inline-block;
+      margin: 40px 0px;
+      width: 40px;
+      height: 2px;
+      background-color: #3c3c3c;
+    }
+  }
+
+
+}

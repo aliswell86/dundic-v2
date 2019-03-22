@@ -1,0 +1,43 @@
+@import 'utils';
+
+.page-adsense {
+  .adsense-970250 {
+    display: block;
+
+    @include media("<small") {
+      display: none;
+    }
+  }
+
+  .adsense-300250 {
+    display: none;
+
+    @include media("<small") {
+      display: block;
+    }
+  }
+}
+
+.page-object {
+  padding: 0.6rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  
+    @include media("<small") {
+      font-size: 1.2rem;
+      font-weight: bold
+    }
+  }
+  
+  .notice {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: $oc-gray-8;
+    font-weight: bold;
+  }
+}

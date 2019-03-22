@@ -1,0 +1,27 @@
+@import 'utils';
+
+.header {
+  border-bottom: 1px solid $oc-gray-2;
+  height: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  justify-content: space-around;
+
+  .title {
+    width: 360px;
+    font-size: 2rem;
+    font-family: 'Song Myung', serif;
+  }
+
+  .sub-title {
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    justify-content: space-around;
+    width: 600px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+}

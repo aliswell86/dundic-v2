@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {
-  MainPage, CardInfoPage, OutlinePage
+  MainPage, CardInfoPage, OutlinePage, LoadMapPage, TeraniumPage
 } from 'pages';
 import { Helmet } from "react-helmet";
 
@@ -24,6 +24,8 @@ class App extends Component {
         <Route path="/" component={logPageView} />
         <Switch>
           <Route exact path="/outline" component={OutlinePage} />
+          <Route exact path="/loadmap" component={LoadMapPage} />
+          <Route exact path="/teranium" component={TeraniumPage} />
           <Route exact path="/1" component={MainPage} />
           <Route exact path="/2" component={CardInfoPage} />
           <Route component={MainPage}/>          

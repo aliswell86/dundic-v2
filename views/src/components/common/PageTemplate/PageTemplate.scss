@@ -4,32 +4,77 @@
   .main {
     // padding-bottom: 1rem;
     // background: $oc-gray-0;
-    min-height: calc(100vh - 9rem);
+    min-height: calc(100vh - 7rem);
   }
 
   button {
     transition: all .15s ease-in;
     background: white;
-    border: 1px solid $oc-gray-3;    
-    width: 66px;
+    border: 1px solid rgba($oc-gray-7, 0.9);    
+    color: rgba($oc-gray-7, 0.9);
     height: 30px;
     border-radius: 0.2rem;
     cursor: pointer;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
   }
   button:hover {
-    color: rgba($oc-blue-6, 0.8);
+    border: 1px solid $oc-gray-9;
+    color: rgba($oc-gray-9, 1);
   }  
   button:focus {
-    border: 1px solid $oc-blue-6;
-    color: rgba($oc-blue-6, 1);
+    border: 1px solid $oc-gray-9;
+    color: rgba($oc-gray-9, 1);
   }
   button:active {
-    border: 1px solid $oc-blue-8;
-    color: rgba($oc-blue-8, 1);
+    border: 1px solid $oc-gray-9;
+    color: rgba($oc-gray-9, 1);
   }
   
   button + button {
     margin-left: 0.1rem;
+  }
+
+  .top-img {
+    text-align: center;
+    
+    .img-cover {
+      background-color: black;
+      
+      color: white;
+      position: relative;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .img-title {
+        position: absolute;
+        bottom: 0px;
+        margin: 0.6rem;
+        font-weight: bold;
+
+        .img-title01 {
+          display: inline-block;
+          font-size: 0.64rem;
+          border-bottom: 0.2px solid white;
+          margin-right: 20px;
+
+          @include media("<small") {
+            margin-right: 10px;
+          }
+        }
+
+        .img-title-sub {
+          display: inline-block;
+          margin-top: 10px;
+          font-size: 1.4rem;
+
+          @include media("<small") {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
   }
 }

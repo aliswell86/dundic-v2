@@ -1,0 +1,32 @@
+@import 'utils';
+
+.character-recommen {
+  min-height: calc(100vh - 7rem);
+  background-color: $oc-gray-0;
+  padding: 0.6rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .content {
+    margin-top: 2rem;
+
+    .content01 {
+      .title {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+  
+      .desc {
+        width: 100%;
+        margin-top: 0.4rem;
+        padding-left: 1rem;
+      }
+    }
+
+    .content01 + .content01 {
+      margin-top: 1rem;
+    }
+  }
+}

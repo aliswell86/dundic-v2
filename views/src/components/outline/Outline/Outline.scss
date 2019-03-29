@@ -30,7 +30,7 @@
 
   .chapter02 {
     height: 600px;
-    background: url('http://bbscdn.df.nexon.com/data6/commu/201901/092232_5c4905489a2f5.jpg') 50% fixed/cover;
+    // background: url('http://bbscdn.df.nexon.com/data6/commu/201901/092232_5c4905489a2f5.jpg') 50% fixed/cover;
   }
 
   .chapter03 {
@@ -38,7 +38,7 @@
     text-align: center;
 
     .title {
-      font-weight: bold;
+      font-weight: 700;
       font-size: 1.4rem;
     }
 
@@ -47,7 +47,56 @@
       margin: 40px 0px;
       width: 40px;
       height: 2px;
-      background-color: #3c3c3c;
+      background-color: $oc-gray-9;
+    }
+
+    .sub-proc {
+
+      .sub-proc01 {
+        display: inline-block;
+        width: 320px;
+        margin: 30px;
+
+        .sub-proc01-img {
+          display: inline-block;
+          text-align: left;
+          width: 60px;
+          height: 50px;
+
+          img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        .sub-proc01-contents {
+          display: inline-block;
+          text-align: left;
+          vertical-align: top;
+          margin-left: 6px;
+          width: 250px;
+
+          .sub-proc01-contents-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0px 0px 20px;
+          }
+
+          .sub-proc01-contents-desc {
+            line-height: 1.2rem;
+            // height: 74px;
+            margin: 0px 0px 10px;
+          }
+
+          .detail-procinfo-btn {
+            text-align: right;
+
+            button {
+              width: 124px;
+            }
+          }
+        }
+      }
     }
   }
 

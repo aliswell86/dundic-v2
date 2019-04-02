@@ -3,8 +3,8 @@
 .page-template {
   .main {
     // padding-bottom: 1rem;
-    // background: $oc-gray-0;
-    min-height: calc(100vh - 7rem);
+    background: $oc-gray-0;
+    min-height: calc(100vh - 7rem - 1px);
   }
 
   button {

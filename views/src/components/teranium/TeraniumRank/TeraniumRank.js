@@ -5,66 +5,76 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-// const RankObject = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price_cnt, id, rarity, total_cnt}) => {
-//   const color = {
-//     color: rarity === '레전더리' ? '#FF7800' : rarity === '유니크' ? '#FF00FF' : '#B36BFF'
-//   }
-//   const borderColor ={
-//     border: rarity === '레전더리' ? '2px solid #FF7800' : rarity === '유니크' ? '2px solid #FF00FF' : '2px solid #B36BFF'
-//   }
-//   return (
-//     <div className={cx('rank-object')}>
-//       <div className={cx('img-name')} style={color}>
-//         <div className={cx('img')} style={borderColor}>
-//           <img src={
-//             name === '골드' ? '/resource/img/gold.png' :
-//             name === '할렘 레어 카드' ? '/resource/img/cardbox1.png' :
-//             name === '마계 카드' ? '/resource/img/cardbox2.png' :
-//             `https://img-api.neople.co.kr/df/items/${id}`
-//             } alt={name}/>
-//         </div>
-//         <div className={cx('name')}>
-//           <a href={`https://dunfa.in/아이템/${name}`} target='_blank'><b>{name}</b> {`(계정당 ${total_cnt}개)`}</a>
-//         </div>
-//       </div>
-//       <div className={cx('info')}>
-//         <div className={cx('day-gold-red')}>
-//           <img className={cx('gold_img')} src='/resource/img/gold_mini.png' alt={'골드'}/>
-//           <NumberFormat value={lowprice} displayType={'text'} thousandSeparator={true} prefix={''}/>
-//         </div>
-//         <div className={cx('day-gold')}>
-//           <img className={cx('gold_img')} src='/resource/img/gold_mini.png' alt={'골드'}/>
-//           <NumberFormat value={cnt_per_gold} displayType={'text'} thousandSeparator={true} prefix={''}/>
-//         </div>
-//         <div className={cx('day-gold')}>
-//           <img className={cx('gold_img')} src='/resource/img/gold_mini.png' alt={'골드'}/>
-//           <NumberFormat value={total_gold_cnt} displayType={'text'} thousandSeparator={true} prefix={''}/>
-//         </div>
-//         <div className={cx('day-gold')}>
-//           <img className={cx('teranium_img')} src='/resource/img/teranium_mini.png' alt={'테라니움'}/>
-//           <NumberFormat value={total_price_cnt} displayType={'text'} thousandSeparator={true} suffix={'개'}/>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
+const CardItem = ({name, card_name, rarity, currCardChoice}) => {
+  return (
+    <>
+      <li style={
+        {color: rarity === '레전더리' ? '#FF7800' : rarity === '유니크' ? '#FF00FF' : '#B36BFF'}
+      } onClick={() => currCardChoice(name, card_name)}>{card_name}</li>
+    </>
+  )
+}
 
-const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price_cnt, id, rarity, total_cnt}) => {
+const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price_cnt, id, rarity, total_cnt, harlemCardInfo, curr_card, card_sort_type, cardSortTypeCtrl, currCardChoice}) => {
   const color = {
     color: rarity === '레전더리' ? '#FF7800' : rarity === '유니크' ? '#FF00FF' : '#B36BFF'
   }
+  const cardList = name === '할렘 레어 카드' ?
+  harlemCardInfo.filter(card => card.seq >= 16 && card.seq <= 35).sort((a, b) => { 
+    return card_sort_type === 'price' ? (a.lowprice < b.lowprice ? 1 : a.lowprice > b.lowprice ? -1 : 0) : 
+    (a.name < b.name ? -1 : a.name > b.name ? 1 : 0);  
+  }).map(card => {
+    const {name: card_name, rarity} = card;
+
+    return (
+      <CardItem name={name} card_name={card_name} rarity={rarity} currCardChoice={currCardChoice} key={card_name}/>
+    )
+  }) : name === '마계 카드' ? harlemCardInfo.sort((a, b) => { 
+    return card_sort_type === 'price' ? (a.lowprice < b.lowprice ? 1 : a.lowprice > b.lowprice ? -1 : 0) : 
+    (a.name < b.name ? -1 : a.name > b.name ? 1 : 0);  
+  }).map(card => {
+    const {name: card_name, rarity} = card;
+
+    return (
+      <CardItem name={name} card_name={card_name} rarity={rarity} currCardChoice={currCardChoice} key={card_name}/>
+    )
+  }) : '';
+
+  const cardListSortTypeName = card_sort_type === 'name' ? 'sort-select' : '';
+  const cardListSortTypePrice = card_sort_type === 'price' ? 'sort-select' : '';
   
   return (
     <div className={cx('item-card')}>
-      <div className={cx('img')}>
-        <img src={
-          name === '골드' ? '/resource/img/gold.png' :
-          name === '할렘 레어 카드' ? '/resource/img/cardbox1.png' :
-          name === '마계 카드' ? '/resource/img/cardbox2.png' :
-          `https://img-api.neople.co.kr/df/items/${id}`
-          } alt={name}/>
+      <div className={cx('head')}>
+        <div className={cx('img')}>
+          <img src={
+            name === '골드' ? '/resource/img/gold.png' :
+            name === '할렘 레어 카드' || name === '마계 카드' ?
+            `https://img-api.neople.co.kr/df/items/${curr_card.id}` :
+            `https://img-api.neople.co.kr/df/items/${id}`
+            } alt={name}/>
+        </div>
+        <div className={cx('name')} style={{color}}>
+          {name} {`(계정당 ${total_cnt}개)`}
+          {
+            name === '할렘 레어 카드' || name === '마계 카드' ? 
+            <>
+              <img src='/resource/img/arrow-down.svg' alt='화살표'/> <br/>
+              현재 카드 : {curr_card.name.substr(0, curr_card.name.indexOf(' 카드'))}
+              <div className={cx('card_selectbox')}>
+                <div className={cx('card-sort')}>
+                  <span className={cx(cardListSortTypeName)} onClick={() => cardSortTypeCtrl('name', name)}>이름순</span>
+                  <span className={cx(cardListSortTypePrice)} onClick={() => cardSortTypeCtrl('price', name)}>가격순</span>
+                </div>
+                <ul>
+                  {cardList}
+                </ul>
+              </div>
+            </>
+            : ''
+          }
+        </div>
       </div>
-      <div className={cx('name')} style={{color}}>{name} {`(계정당 ${total_cnt}개)`}</div>
       <div className={cx('info')}>
         <div className={cx('desc')}>
           <div className={cx('kind-name')}>테라니움 한개당</div>
@@ -79,7 +89,7 @@ const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price
           </div>
         </div>
         <div className={cx('desc')}>
-          <div className={cx('kind-name')}>최저가</div>
+          <div className={cx('kind-name')}>현재 경매 최저가</div>
           <div className={cx('value')}>
             <NumberFormat value={lowprice} displayType={'text'} thousandSeparator={true} prefix={''} suffix={'골드'}/>
           </div>
@@ -95,9 +105,9 @@ const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price
   );
 }
 
-const TeraniumRank = ({result}) => {
+const TeraniumRank = ({result, harlemCardInfo, cardSortTypeCtrl, currCardChoice}) => {
   const list = result.map((obj) => {
-    const {seq, name, cnt_per_gold, total_gold_cnt, total_price_cnt, lowprice, id, rarity, total_cnt} = obj;
+    const {seq, name, cnt_per_gold, total_gold_cnt, total_price_cnt, lowprice, id, rarity, total_cnt, curr_card, card_sort_type} = obj;
 
     return (
       <TeraniumItem name={name} key={seq}
@@ -107,7 +117,12 @@ const TeraniumRank = ({result}) => {
       cnt_per_gold={cnt_per_gold}
       id={id}
       rarity={rarity}
-      total_cnt={total_cnt}/>
+      total_cnt={total_cnt}
+      harlemCardInfo={harlemCardInfo}
+      curr_card={curr_card}
+      card_sort_type={card_sort_type}
+      cardSortTypeCtrl={cardSortTypeCtrl}
+      currCardChoice={currCardChoice}/>
     );
   });
 

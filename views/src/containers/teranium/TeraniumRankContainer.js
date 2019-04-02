@@ -12,17 +12,37 @@ class TeraniumRankContainer extends Component {
       TeraniumActions.getAuctionLowPrice();
     }
   }
+
+  cardSortTypeCtrl = (type, name) => {
+    const {TeraniumActions, result} = this.props;
+    const filterSortType = result.find(item => item.name === name).card_sort_type;
+
+    if(filterSortType!== type) {
+      TeraniumActions.setCardSortType({type, name});
+    }
+  }
+
+  currCardChoice = (name, card_name) => {
+    const {TeraniumActions, result} = this.props;
+    TeraniumActions.setCurrCard({name, card_name});
+  }
+
   render() {
-    const {result} = this.props;
+    const {cardSortTypeCtrl, currCardChoice} = this;
+    const {result, harlemCardInfo} = this.props;
     return (
-      <TeraniumRank result={result}/>
+      <TeraniumRank 
+      result={result} harlemCardInfo={harlemCardInfo}
+      cardSortTypeCtrl={cardSortTypeCtrl}
+      currCardChoice={currCardChoice}/>
     );
   }
 }
 
 export default connect(
   (state) => ({
-    result: state.teranium.toJS().result
+    result: state.teranium.toJS().result,
+    harlemCardInfo: state.teranium.toJS().harlemCardInfo
   }),
   (dispatch) => ({
     TeraniumActions: bindActionCreators(teraniumActions, dispatch)

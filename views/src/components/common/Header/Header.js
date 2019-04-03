@@ -8,13 +8,13 @@ const cx = classNames.bind(styles);
 const Header = () => {
   return (
     <header className={cx('header')}>
-      <div className={cx('title')}><a href="/">던파광부 노가다정보</a></div>
+      <div className={cx('title')}><a href="/">던파광부닷컴</a></div>
       <div className={cx('sub-title')}>
         <div><Link to='/outline'>던파광부 개요</Link></div>
         <div><Link to='/loadmap'>광부케릭 로드맵</Link></div>
         <div><Link to='/teranium'>테라니움 순위표</Link></div>
-        <div>주요 부산물 가격</div>
-        <div>할렘 카드 최저가</div>
+        {/* <div>주요 부산물 가격</div>
+        <div>할렘 카드 최저가</div> */}
       </div>
     </header>
   );

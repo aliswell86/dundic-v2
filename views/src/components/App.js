@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div>
         <Helmet>
-          <title>던파광부 노가다정보</title>
+          <title>던파광부닷컴</title>
         </Helmet>
         <Route path="/" component={logPageView} />
         <Switch>

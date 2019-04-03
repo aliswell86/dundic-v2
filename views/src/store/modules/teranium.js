@@ -64,14 +64,31 @@ export default handleActions({
     return state.setIn(['result', findIndex, 'card_sort_type'], type);
   },
   [SET_CURR_CARD]: (state, action) => {
-    // const {type, name} = action.payload;
-    // const findIndex = state.get('result').toJS().map(item => {
-    //   return {
-    //     ...item,
-    //     curr_card: 
-    //   }
-    // });
+    const {name, card_name} = action.payload;
+    const harlemCardInfo = state.get('harlemCardInfo').toJS();
+    const result = state.get('result').toJS();
+    const findCardInfo = harlemCardInfo.find(card => card.name === card_name);
+    const findIndex = state.get('result').toJS().findIndex(item => item.name === name);
 
-    return state;
+    const reResult = result.map((item, index) => {
+      const {limit_cnt, component_cnt, price_cnt, lowprice, curr_card} = item;
+      const total_price_cnt = limit_cnt * price_cnt;
+      const lowpriceConfig = findIndex === index ? findCardInfo.lowprice : lowprice;
+      const total_gold_cnt = (limit_cnt * component_cnt) * (lowpriceConfig);
+      const cnt_per_gold = Math.round(total_gold_cnt / total_price_cnt);
+
+      return {
+        ...item,
+        curr_card: findIndex === index ? findCardInfo : curr_card,
+        lowprice: lowpriceConfig,
+        total_price_cnt: total_price_cnt,
+        total_gold_cnt: total_gold_cnt,
+        cnt_per_gold: cnt_per_gold
+      }
+    }).sort((a, b) => { 
+      return a.cnt_per_gold < b.cnt_per_gold ? 1 : a.cnt_per_gold > b.cnt_per_gold ? -1 : 0;  
+    });
+    
+    return state.set('result', fromJS(reResult));
   }
 }, initialState);

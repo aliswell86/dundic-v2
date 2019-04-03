@@ -23,7 +23,7 @@ class TeraniumRankContainer extends Component {
   }
 
   currCardChoice = (name, card_name) => {
-    const {TeraniumActions, result} = this.props;
+    const {TeraniumActions} = this.props;
     TeraniumActions.setCurrCard({name, card_name});
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Outline.scss';
 import classNames from 'classnames/bind';
+import {Link} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>만렙달성</div>
               <div className={cx('sub-proc01-contents-desc')}>케릭터를 골라 레벨업을 합니다. 친절한 퀘스트진행을 따라가다 보면 금방 만렙을 달성하게 됩니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button>케릭터추천 바로가기</button>
+                <button><Link to='/loadmap'>케릭터추천 바로가기</Link></button>
               </div>
             </div>
           </div>
@@ -44,7 +45,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>장비스펙업</div>
               <div className={cx('sub-proc01-contents-desc')}>토탈이클립스 슬레이어 난이도를 수월하게 클리어하기 위해서는 높은스펙이 필요한건 아닙니다. 할렘에픽세트 정도면 무난합니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button>장비추천 바로가기</button>
+                <button><Link to='/loadmap'>장비추천 바로가기</Link></button>
               </div>
             </div>
           </div>
@@ -56,7 +57,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>토탈이클립스 클리어</div>
               <div className={cx('sub-proc01-contents-desc')}>이제 토탈이클립스 던전을 슬레이어난이도로 선택하여 반복반복 또반복 클리어를 합니다. 일반+피로도물약1회면 하루에 24회 클리어가능합니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button>스킬추천 바로가기</button>
+                <button><Link to='/loadmap'>스킬추천 바로가기</Link></button>
               </div>
             </div>
           </div>
@@ -74,7 +75,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>던전클리어보상</div>
               <div className={cx('sub-proc01-contents-desc')}>토탈이클립스 슬레이어난이도 클리어시  SSS랭크 달성기준 한판당 약 30,000 ~ 42,000골드 보상이 있습니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button>수익계산기 바로가기</button>
+                <button><Link to='/teranium'>수익계산기 바로가기</Link></button>
               </div>
             </div>
           </div>
@@ -86,7 +87,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>테라니움 재료아이템 판매</div>
               <div className={cx('sub-proc01-contents-desc')}>클리어시 한판당 4개의 테라니움을 얻습니다. NPC를통해 여러가지 아이템으로 교환해서 경매장에 올려 판매합니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button style={{width: '154px'}}>테라니움 순위표 바로가기</button>
+                <button style={{width: '154px'}}><Link to='/teranium'>테라니움 순위표 바로가기</Link></button>
               </div>
             </div>
           </div>
@@ -98,7 +99,7 @@ const Outline = () => {
               <div className={cx('sub-proc01-contents-title')}>기타아이템 드롭</div>
               <div className={cx('sub-proc01-contents-desc')}>간혹 골드가치가 꽤되는 아이템이 드롭됩니다. 성물 장비, 지옥파티 초대장, 네임드카드, 균열 반응석 등이 해당됩니다.</div>
               <div className={cx('detail-procinfo-btn')}>
-                <button style={{width: '140px'}}>경매장최저가 바로가기</button>
+                <button style={{width: '140px'}}><Link to='/teranium'>경매장최저가 바로가기</Link></button>
               </div>
             </div>
           </div>

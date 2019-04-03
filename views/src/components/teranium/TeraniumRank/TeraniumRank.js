@@ -60,7 +60,7 @@ const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price
             name === '할렘 레어 카드' || name === '마계 카드' ? 
             <>
               <img src='/resource/img/arrow-down.svg' alt='화살표'/> <br/>
-              현재 카드 : {curr_card.name.substr(0, curr_card.name.indexOf(' 카드'))}
+              선택 카드 : {curr_card.name.substr(0, curr_card.name.indexOf(' 카드'))}
               <div className={cx('card_selectbox')}>
                 <div className={cx('card-sort')}>
                   <span className={cx(cardListSortTypeName)} onClick={() => cardSortTypeCtrl('name', name)}>이름순</span>

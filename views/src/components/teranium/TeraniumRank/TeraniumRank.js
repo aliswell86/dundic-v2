@@ -54,7 +54,21 @@ const TeraniumItem = ({name, lowprice, cnt_per_gold, total_gold_cnt, total_price
             `https://img-api.neople.co.kr/df/items/${id}`
             } alt={name}/>
         </div>
-        <div className={cx('name')} style={{color}}>
+        <div className={cx('name')} style={{color}}
+        onClick={(e) => {
+          if(name === '할렘 레어 카드' || name === '마계 카드') {
+            const currStyle = window.getComputedStyle(e.target.children[2]).transform;
+            console.log("currStyle : " + currStyle);
+            if(currStyle === 'matrix(1, 0, 0, 1, 0, 0)' || currStyle === 'scale(1)') {
+              e.target.children[2].style.transform = 'scale(0)';
+            }else{
+              e.target.children[2].style.transform = 'scale(1)';
+            }
+          }
+        }}
+        onMouseEnter={(e) => console.log(e.target)}
+        onMouseLeave={(e) => console.log(e.target)}
+        >
           {name} {`(계정당 ${total_cnt}개)`}
           {
             name === '할렘 레어 카드' || name === '마계 카드' ? 
@@ -146,7 +160,7 @@ const TeraniumRank = ({result, harlemCardInfo, cardSortTypeCtrl, currCardChoice}
           <div className={cx('ft_selectbox')}>
             <ul>
               <li>순위</li>
-              <li>얻는골드</li>
+              <li>골드량</li>
             </ul>
           </div>
         </span>

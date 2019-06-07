@@ -1,0 +1,14 @@
+@import 'utils';
+
+.profit-calc{
+  padding: 0.6rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .chapter01 {
+    margin: 100px 0px;
+    text-align: center;
+  }
+}
